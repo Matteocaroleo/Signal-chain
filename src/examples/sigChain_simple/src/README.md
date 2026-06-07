@@ -1,0 +1,1 @@
+Example of usage of simple signal chain
