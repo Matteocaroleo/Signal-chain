@@ -220,8 +220,11 @@ public:
     }
 
     /// @brief getters that returns pointer to name
-    /// @return pointer to name
-    const char* getName() {return _name;}
+    /// @return pointer to name, or "unnamed" if no name
+    const char* getName() {
+        if (_name != nullptr) return _name;
+        else return "unnamed";
+    }
     
     /// @brief call set param function of original effect
     /// @param param1 new value of parameter

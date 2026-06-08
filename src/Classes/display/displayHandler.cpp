@@ -21,6 +21,10 @@ void DisplayHandler::Update(){
             drawWaveForm();
             break;
 
+        case DisplayState::SIGNAL_CHAIN:
+            drawSignalChain ();
+            break;
+
         case DisplayState::POT_VALUE:
             drawPotValue();
             break;
@@ -119,8 +123,26 @@ void DisplayHandler::drawWaveForm (){
 
 
 
-// LONG FUNCTION AHEAD -> prints test logo atm
+// Standby screen drawing function
 void DisplayHandler::drawStandbyScreen(){
   _displayPtr->SetCursor(0,0);
-  _displayPtr->WriteString("TESTLOGO", Font_16x26, true);  
+  _displayPtr->WriteString("STANDBY", Font_16x26, true);  
+}
+
+// Draws signal chain
+void DisplayHandler::drawSignalChain(){
+    _displayPtr->SetCursor(0,0);
+  
+    // checks if signal chain was given
+    if (_sigChain_handlerPtr != nullptr){
+
+        // prints the name of all effects
+        for (unsigned int i = 0; i < _sigChain_handlerPtr->GetEffectsCounter(); i++){
+            _displayPtr->SetCursor(0, 10*i);
+            _displayPtr->WriteString(_sigChain_handlerPtr->GetEffectName(i), Font_7x10, true);
+        } 
+    }
+    else {
+        _displayPtr->WriteString ("NO CHAIN", Font_16x26, true); 
+    }
 }

@@ -1,7 +1,10 @@
 // TODO:
 //      - divide implementation and declaration
 
-#include "effectInterface.hpp"
+#ifndef SIGCHAIN_HANDLER_H
+#define SIGCHAIN_HANDLER_H
+
+#include "effectInterface.cpp"
 #define MAX_NUM_OF_BLOCKS 8 
 
 /// @brief Handler of the signal chain
@@ -51,5 +54,24 @@ public:
         }
         return dummySample;
     }
+
+    /// @brief Getter for effects counter
+    /// @return number of effects in the chain
+    unsigned int GetEffectsCounter (){return _effectsCounter;}
+
+    /// @brief Getter for effect name 
+    /// @param effectIdx index of effect to retrieve the name from
+    const char* GetEffectName(unsigned int effectIdx) {
+        
+        // effectIdx starts at 0, effects counter starts at 1
+        if (effectIdx < _effectsCounter) {
+            return _effects [effectIdx]->getName();
+        }
+
+        else { 
+            return nullptr; 
+        }
+    }
 };
 
+#endif //SIGCHAIN_HANDLER_H
