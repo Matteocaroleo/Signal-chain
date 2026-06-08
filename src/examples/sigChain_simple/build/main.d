@@ -105,7 +105,7 @@ build/main.o: src/main.cpp \
  ../../../libs/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  ../../../libs/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
  ../../Classes/sigChain/sigChain_handler.hpp \
- ../../Classes/effect/effectInterface.hpp \
+ ../../Classes/effect/effectInterface.cpp \
  ../../Classes/effect/effectWrapper.cpp \
  ../../Classes/effect/effectInterface.cpp \
  ../../Classes/display/displayHandler.hpp \
@@ -207,6 +207,7 @@ build/main.o: src/main.cpp \
  ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavPlayer.h \
  ../../../libs/libDaisy/src/daisy.h \
  ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavWriter.h \
+ ../../Classes/display/../sigChain/sigChain_handler.hpp \
  ../../../libs/DaisySP/Source/daisysp.h \
  ../../../libs/DaisySP/Source/Control/adenv.h \
  ../../../libs/DaisySP/Source/Control/adsr.h \
@@ -369,7 +370,7 @@ build/main.o: src/main.cpp \
 ../../../libs/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
 ../../../libs/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h:
 ../../Classes/sigChain/sigChain_handler.hpp:
-../../Classes/effect/effectInterface.hpp:
+../../Classes/effect/effectInterface.cpp:
 ../../Classes/effect/effectWrapper.cpp:
 ../../Classes/effect/effectInterface.cpp:
 ../../Classes/display/displayHandler.hpp:
@@ -471,6 +472,7 @@ build/main.o: src/main.cpp \
 ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavPlayer.h:
 ../../../libs/libDaisy/src/daisy.h:
 ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavWriter.h:
+../../Classes/display/../sigChain/sigChain_handler.hpp:
 ../../../libs/DaisySP/Source/daisysp.h:
 ../../../libs/DaisySP/Source/Control/adenv.h:
 ../../../libs/DaisySP/Source/Control/adsr.h:

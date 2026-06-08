@@ -202,7 +202,9 @@ build/displayHandler.o: ../../Classes/display/displayHandler.cpp \
  ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavParser.h \
  ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavPlayer.h \
  ../../../libs/libDaisy/src/daisy.h \
- ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavWriter.h
+ ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavWriter.h \
+ ../../Classes/display/../sigChain/sigChain_handler.hpp \
+ ../../Classes/effect/effectInterface.cpp
 ../../../libs/libDaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 ../../../libs/libDaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 ../../../libs/libDaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -407,3 +409,5 @@ build/displayHandler.o: ../../Classes/display/displayHandler.cpp \
 ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavPlayer.h:
 ../../../libs/libDaisy/src/daisy.h:
 ../../../libs/libDaisy/src/sys/../../../../libs/libDaisy/src/util/WavWriter.h:
+../../Classes/display/../sigChain/sigChain_handler.hpp:
+../../Classes/effect/effectInterface.cpp:

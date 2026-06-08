@@ -1,13 +1,17 @@
 // TO DO: 
 //      - add const char with instantiation (e.g. name of param of set param)
 
+/// @file main.cpp
+/// @brief  Example code to show an easy signal chain implementation.
+///         Also uses a i2c display: undef ther DISPLAY constant to remove code that uses it
+
 #include "sigChain/sigChain_handler.hpp"
 #include "effect/effectWrapper.cpp"
 #include "display/displayHandler.hpp"
 #include "daisy_seed.h"
 #include "daisysp.h"
 
-// #define DISPLAY
+#define DISPLAY
 
 using namespace daisy;
 DaisySeed hw;
@@ -110,8 +114,8 @@ int main (){
         &daisysp::Tremolo::Process
     );
 
-    // Hz
-    float tremTime = 1.f;
+    
+    float tremTime = 1.f; // [Hz]
     tremWrapper.SetParam(tremTime);
 
     // first block inserted: works because of POLYMORPHISM
@@ -122,7 +126,10 @@ int main (){
     #ifdef DISPLAY
     // set display state at start
     disp1.SetState(DisplayState::STANDBY);
-    bool flag = false;  
+
+    // set also signal chain
+    disp1.SetSigChain (&chain1);
+    unsigned int state = 0;  
     #endif // DISPLAY
 
     while (1)
@@ -134,16 +141,19 @@ int main (){
         frequency = ((int)frequency + 5) % 880;
        
         #ifdef DISPLAY
-        // Switches between standby and waveform every cycle of audio
+        // Switches between states every cycle of audio
         if (frequency == 875){
-            if (flag == false){
+            if (state == 0){
                 disp1.SetState(DisplayState::WAVEFORM_VIEWER);
-                flag = true;
             }
-            else{
+            else if (state == 1){
                 disp1.SetState(DisplayState::STANDBY);
-                flag = false;
             }
+            else {
+                disp1.SetState(DisplayState::SIGNAL_CHAIN);
+            }
+            // update display state
+            state = (state % 3) + 1; 
         }
         disp1.Update();
         #endif // DISPLAY 
