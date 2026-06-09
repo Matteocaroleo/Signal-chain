@@ -112,9 +112,14 @@ void DisplayHandler::drawWaveForm (){
     // plot whole buffer -> TAKES CIRCULARITY INTO ACCOUNT
     for (int i = idx; i < idx + _windowSize; i++){
         // *100 is for rescaling -> NEEDS TUNING
-        // NEEDS CLAMPING LOGIC to avoid segfault
+        
+        // TODO check if compiler optimizes clamping
         y1 = zeroOfScreen - (_circBuffer_ptr[i % BUFFER_SIZE]* 40);
+        if (y1 >= 63) y1 = 63;
+        if (y1 <= 0) y1 = 0; 
         y2 = zeroOfScreen - (_circBuffer_ptr[(i + 1) % BUFFER_SIZE] * 40);
+        if (y2 >= 63) y2 = 63;
+        if (y2 <= 0) y2 = 0;
         _displayPtr->DrawLine(i-idx, y1, (i+1)-idx, y2, true);
     }   
 
@@ -143,6 +148,6 @@ void DisplayHandler::drawSignalChain(){
         } 
     }
     else {
-        _displayPtr->WriteString ("NO CHAIN", Font_16x26, true); 
+        _displayPtr->WriteString ("NO 5 CHAIN", Font_16x26, true); 
     }
 }
